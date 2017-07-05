@@ -1,0 +1,198 @@
+.all-colors-pallete {
+  color: #ED5130;
+  color: #00A59C;
+  color: #B4CABE;
+  color: #A9F1E5;
+}
+
+body {
+  padding: 70px 0 0 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6, dt {
+  color: #00A59C;
+}
+
+h1 > small, h2 > small, 
+h3 > small, h4 > small, 
+h5 > small, h6 > small {
+  color: #B4CABE;
+}
+
+dt { 
+  margin-top: 20px;
+}
+
+textarea {
+  resize: none;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #00A59C;
+}
+
+.label {
+  margin-right: 10px;
+}
+
+.label-success, .label-primary, .label-default, .btn-success  {
+  background-color: #00A59C;
+  border-color: #00A59C;
+}
+
+.label-warning, .label-danger, .btn-warning  {
+  background-color: #ED5130;
+  border-color: #ED5130;
+}
+
+.navbar {
+  background: white;
+}
+
+.navbar span, a, ul>li>a {
+  color: #00A59C;
+}
+
+.navbar-brand img {
+  max-height: 20px;
+  display: inline-block;
+}
+
+/*.jumbotron {
+    background-color: #B4CABE;
+    color: #fff;
+    text-align: center;
+    background-image: url("../images/background2.jpg");
+    min-height: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}*/
+
+.jumbotron a {
+  background-color: #00A59C;
+  border-color: #00A59C;
+}
+
+.caption {
+    overflow: hidden;
+}
+
+.caption > button {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.caption h4, h3 {
+    white-space: nowrap;
+    color: #00A59C;
+}
+
+.caption h4 > a, h3 > a{
+    color: #00A59C;
+}
+
+.thumbnail img {
+    width: 100%;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
+}
+
+.ratings {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.ratings .badge {
+  color: #00A59C;
+}
+
+.ratings ul {
+  list-style: none;
+  padding: 0;
+}
+
+.ratings ul > li {
+  display: inline-block;
+}
+
+.ratings ul > li > button {
+  background-color: #00A59C;
+  border-color: #00A59C;
+  margin: 2px;
+  font-size: 0.9em;
+}
+
+.ratings > ul > li > button.btn-warning {
+  background-color: #ED5130;
+  border-color: #ED5130;
+}
+/* chef profile */
+
+.chef-card {
+  padding-top: 20px;
+} 
+/* media list */
+
+.list-group-item > a:hover {
+  text-decoration: none;
+  color: #00A59C;
+}
+.media-object {
+  width: 64px;
+  height: 64px;
+}
+
+/* reviews */
+
+.well {
+  margin-bottom: 10px;
+  /*margin-top: 20px;*/
+}
+.reviews .panel-heading {
+  color: #00A59C;
+}
+
+.panel-default > .panel-heading .badge {
+  background-color: #00A59C;
+}
+
+.reviews strong {
+  color: #00A59C;
+}
+
+.reviews button {
+  margin-top: 5px;
+}
+
+/* labels */
+
+.labels {
+  margin-left: 10px;
+}
+
+/* footer */
+
+.logo > img {
+  max-width: 96px;
+  max-height: 96px;
+  margin: 0 auto;
+}
+
+.social > ul > li > a > img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
