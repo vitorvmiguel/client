@@ -36,6 +36,52 @@ const About = () => {
           </div>
         </div>
       </div>
+      <hr/>
+      <div className="row">
+
+        <div className="about col-xs-12">
+          <div className="row">
+            <h2 className="text-center col-xs-8 col-xs-offset-2">BUT, <strong>HOW KITCHES WORKS?</strong></h2>
+          </div>
+          <div className="row">
+            <div className="col-sm-10 col-sm-offset-2">
+              <div className="col-sm-2 about-card">
+                <div className="circle"><p>1</p></div>
+                <p className="text-center">Create an account</p>
+              </div>
+              <div className="col-sm-2 about-card">
+                <div className="circle"><p>2</p></div>
+                <p className="text-center">Check out who’s cooking what</p>
+              </div>
+              <div className="col-sm-2 about-card">
+                <div className="circle"><p>3</p></div>
+                <p className="text-center">Place your order</p>
+              </div>
+              <div className="col-sm-2 about-card">
+                <div className="circle"><p>4</p></div>
+                <p className="text-center">Pick it up or have it delivered</p>
+              </div>
+              <div className="col-sm-2 about-card">
+                <div className="circle"><p>5</p></div>
+                <p className="text-center">Enjoy!</p>
+              </div>
+            </div>       
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div className="row">
+        <div className="about col-xs-12">
+          <h2 className="text-center col-xs-8 col-xs-offset-2">ARE YOU A GOOD COOKER, OR AS WE CALL IT - <strong>GODSENT</strong>?</h2>
+          <p className="text-center col-xs-8 col-xs-offset-2 about-card">
+            Whether you are brilliant at Italian cuisine, 
+            a master of Thai fusion or cook Mexican dishes
+            like no one else, you have come to the right 
+            place. Here at Kitches we love food from all 
+            over the world. Simply register below, and get your kitchen ready!</p>
+            <button href="/contact" className="btn btn-success btn-lg center-block">COOK WITH KITCHES</button>
+        </div>
+      </div>
     </div>
   );
 }

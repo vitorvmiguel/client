@@ -10,9 +10,10 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 // components
 import App from './components/App';
 import DishesList from './components/DishesList';
-import Cart from './components/Cart';
+import Contact from './components/Contact';
 import DishForm from './components/DishForm';
 import About from './components/About';
+import DishShow from './components/DishShow';
 import './css/index.css';
 // state management
 import reducers  from './reducers/index';
@@ -27,7 +28,8 @@ render(
         <IndexRoute component={DishesList}/>
         <Route path="/about" component={About}/>
         <Route path="/chef" component={DishForm}/>
-        <Route path="/cart" component={Cart}/>
+        <Route path="/contact" component={Contact}/>
+        <Route path="/dishes/:id" component={DishShow}/>
       </Route>
     </Router>
   </Provider>, 

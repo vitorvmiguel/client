@@ -74,6 +74,8 @@ export function dishesReducers(state={
       
       return {dishes: [...currentDishToUpdate.slice(0, indexToUpdate), newDishToUpdate,
         ...currentDishToUpdate.slice(indexToUpdate)]}
+    case 'GET_COMMENTS':
+      return {...state, comments: action.payload}
     default: 
       return state;
   }

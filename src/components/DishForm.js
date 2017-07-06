@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { findDOMNode } from 'react-dom';
@@ -11,6 +11,11 @@ class DishForm extends Component {
      this.handleDelete = this.handleDelete.bind(this);
      this.props.getDishes();
   } 
+
+  static contextTypes = {
+    router: PropTypes.object
+  };
+
   handleSubmit(e) {
     e.preventDefault();
     const dish = {
@@ -19,19 +24,31 @@ class DishForm extends Component {
       availablePortions: findDOMNode(this.refs.portions).value,
       price: findDOMNode(this.refs.price).value,
       description: findDOMNode(this.refs.description).value,
-      chefId: "2"
+      chefId: "1"
     }
     this.props.postDish(dish);
+
+    this.handleRedirect();
   }
   handleDelete(e) {
     e.preventDefault();
     let id = findDOMNode(this.refs.delete).value;
     this.props.deleteDish(id);
+
+    this.handleRedirect();
+  }
+  handleRedirect() {
+    this.context.router.push('/');
   }
   render() {
     const dishList = this.props.dishes.map(function(dish){
       return (<option key={dish.id}>{dish.id}</option>)
     })
+
+    let portions = [];
+    for (var i = 1; i < 51; i++){
+      portions.push(<option key={i}>{i}</option>);
+    }
     return(
       <div className="row">
         <div className="col-sm-6">
@@ -52,16 +69,7 @@ class DishForm extends Component {
               <div className="form-group">
                 <label htmlFor="portions">Portions</label>
                 <select required className="form-control" id="portions" ref="portions">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-                  <option>8</option>
-                  <option>9</option>
-                  <option>10</option>
+                  {portions}
                 </select>
               </div>
               <div className="form-group">

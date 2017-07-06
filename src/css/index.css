@@ -66,7 +66,7 @@ a:hover {
     background-color: #B4CABE;
     color: #fff;
     text-align: center;
-    background-image: url("../images/background2.jpg");
+    background-image: url("../images/jumbotron_bkg.jpg");
     min-height: 50%;
     background-repeat: no-repeat;
     background-position: center;
@@ -205,7 +205,11 @@ a:hover {
   padding: 30px;
 }
 
-.about > h2 {
+.about p {
+  font-size: 1.3em;
+}
+
+.about h2 {
   color: black;
   font-size: 3em;
 }
@@ -217,10 +221,31 @@ a:hover {
 .about-card {
   padding: 30px;
 }
+.circle {
+  position: relative;
+  background-color: #00A59C;
+  color: white;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 700;
+  width: 45px;
+  height: 0;
+  padding-top: 45px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.circle p {
+  position: absolute;
+  top:50%; 
+  left:50%;
+  transform: translate(-50%, -50%);
+  margin:0;
+}
 
 @media only screen and (min-width: 992px) {
   .fix {
     position: fixed;
-    width: 30%;
+    width: 28%;
   }
 }

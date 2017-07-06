@@ -36,9 +36,11 @@ class DishListItem extends Component {
     }
   }
   render() {
-    let rating = '';
+    let rating = 'be 1st';
+    let nRatings = '';
     if(this.props.averageRating !== "0.0") {
       rating = this.props.averageRating;
+      nRatings = this.props.numberOfRatings;
     } 
     return (
       <li key={this.props.id} className="col-sm-6 col-md-6 col-lg-6">
@@ -70,7 +72,7 @@ class DishListItem extends Component {
                 <button className="btn btn-info btn-xs" type="button">
                   <span className="glyphicon glyphicon-heart"></span>
                   <span className="rating"> {rating} </span>
-                  <span className="badge">{this.props.numberOfRatings}</span>
+                  <span className="badge">{nRatings}</span>
                 </button>
               </li>
               <li>

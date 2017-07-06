@@ -76,3 +76,23 @@ export function updateDish(dish){
     payload: dish
   }
 }
+
+export function getComments(id){
+  return function(dispatch){
+    axios.get('/dishes/'+ id +'/ratings')
+    .then(function(response){
+      dispatch(
+        {
+          type: 'GET_COMMENTS',
+          payload: response.data
+        })
+    })
+    .catch(function(error){
+      dispatch(
+        {
+            type: 'GET_COMMENTS_ERROR',
+            payload: error
+        })
+    })
+  }
+}
