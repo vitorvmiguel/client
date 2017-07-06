@@ -96,3 +96,43 @@ export function getComments(id){
     })
   }
 }
+
+export function postComment(comment){
+  return function(dispatch){
+    axios.post('/rating', comment)
+    .then(function(response){
+        dispatch(
+          {
+            type: 'POST_COMMENT', 
+            payload: response.data
+          })
+    })
+    .catch(function(error){
+        dispatch(
+          {
+            type: 'POST_COMMENT_ERROR',
+            payload: error
+        })
+    })
+  }
+}
+
+export function getOneDish(id){
+  return function(dispatch){
+    axios.get('/dishes/'+ id)
+    .then(function(response){
+      dispatch(
+        {
+          type: 'GET_ONE_DISH',
+          payload: response.data
+        })
+    })
+    .catch(function(error){
+      dispatch(
+        {
+            type: 'GET_ONE_DISH_ERROR',
+            payload: error
+        })
+    })
+  }
+}

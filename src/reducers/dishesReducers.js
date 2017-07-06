@@ -1,39 +1,7 @@
 export function dishesReducers(state={
-  dishes: [
-  //  {	
-  //             id: "0",
-  //             imageUrl: "http://honest-food.net/wp-content/uploads/2010/03/farro-pasta-320x280.jpg",
-  //             dishName: "Amazing Dish",
-  //             chefName: "Mighty Chef",
-  //             averageRating: "4.8",
-  //             numberOfRatings: "8",
-  //             numberOfComments: "6",
-  //             availablePortions: "4",
-  //             price: "6.99"
-  //           },
-  //           {	
-  //             id: "1",
-  //             imageUrl: "http://honest-food.net/wp-content/uploads/2010/03/farro-pasta-320x280.jpg",
-  //             dishName: "Extraordinary Dish",
-  //             chefName: "Holy Chef",
-  //             averageRating: "4.7",
-  //             numberOfRatings: "80",
-  //             numberOfComments: "5",
-  //             availablePortions: "32",
-  //             price: "4.99"
-  //           },
-  //           {	
-  //             id: "2",
-  //             imageUrl: "http://honest-food.net/wp-content/uploads/2010/03/farro-pasta-320x280.jpg",
-  //             dishName: "Gorgeous Dish",
-  //             chefName: "Super Chef",
-  //             averageRating: "4.5",
-  //             numberOfRatings: "13",
-  //             numberOfComments: "10",
-  //             availablePortions: "21",
-  //             price: "7.99"
-  //           }
-  ]
+  dishes: [],
+  comments: [],
+  one_dish: {}
 }, action) {
   switch(action.type) {
     case 'GET_DISHES':
@@ -74,8 +42,12 @@ export function dishesReducers(state={
       
       return {dishes: [...currentDishToUpdate.slice(0, indexToUpdate), newDishToUpdate,
         ...currentDishToUpdate.slice(indexToUpdate)]}
+    case 'GET_ONE_DISH':
+      return {one_dish: action.payload}
     case 'GET_COMMENTS':
       return {...state, comments: action.payload}
+    case 'POST_COMMENT':
+      return {comments:[...state.comments, ...action.payload]}
     default: 
       return state;
   }
