@@ -58,8 +58,8 @@ class Cart extends Component {
       )
     }, this);
     return (
-    <div className="col-sm-6">
-      <div className="thumbnail">
+    <div className="col-sm-12">
+      <div className="thumbnail affix">
         <div className="caption">
           <h4>
             <span className="glyphicon glyphicon-shopping-cart"> </span>

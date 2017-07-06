@@ -13,7 +13,6 @@ class DishesList extends Component {
     this.props.getDishes();
   }
   render() {
-    console.log('PROPS.DISHES: ',this.props.dishes)
     const dishesList = this.props.dishes.map(function(dish){
       return (
         <DishListItem 
@@ -31,18 +30,20 @@ class DishesList extends Component {
     });
     return(
       <div className="row">
-        <ul className="list-unstyled">
-          {dishesList}
-        </ul>
-        <DishForm />
-        <Cart />
+        <div className="col-md-8">
+          <ul className="list-unstyled">
+            {dishesList}
+          </ul>
+        </div>
+        <div className="col-md-4">
+          <Cart />
+        </div>
       </div>     
     );
   }
 }
 
 function mapStateToProps(state){
-  console.log(state.dishes.dishes)
   return {
     dishes: state.dishes.dishes
   }

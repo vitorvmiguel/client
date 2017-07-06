@@ -196,3 +196,19 @@ a:hover {
   max-height: 100%;
 }
 
+.about {
+  padding: 30px;
+}
+
+.about > h2 {
+  color: black;
+  font-size: 3em;
+}
+
+.about-card > img {
+  padding: 30px;
+}
+
+.about-card {
+  padding: 30px;
+}

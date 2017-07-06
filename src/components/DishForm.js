@@ -2,28 +2,25 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { findDOMNode } from 'react-dom';
-import { postDish, deleteDish } from '../actions/dishesActions'
+import { postDish, deleteDish, getDishes } from '../actions/dishesActions'
 
 class DishForm extends Component {
   constructor(props) {
      super(props);
      this.handleSubmit = this.handleSubmit.bind(this);
      this.handleDelete = this.handleDelete.bind(this);
+     this.props.getDishes();
   } 
   handleSubmit(e) {
     e.preventDefault();
-    const dish = [{
+    const dish = {
       dishName: findDOMNode(this.refs.name).value,
-      id: "",
-      imageURL: findDOMNode(this.refs.image).value,
-      chefName: "",
-      averageRating: "",
-      numberOfRatings: "0",
-      numberOfComments: "0",
+      imageUrl: findDOMNode(this.refs.image).value,
       availablePortions: findDOMNode(this.refs.portions).value,
       price: findDOMNode(this.refs.price).value,
-      description: findDOMNode(this.refs.description).value
-    }]
+      description: findDOMNode(this.refs.description).value,
+      chefId: "2"
+    }
     this.props.postDish(dish);
   }
   handleDelete(e) {
@@ -36,6 +33,7 @@ class DishForm extends Component {
       return (<option key={dish.id}>{dish.id}</option>)
     })
     return(
+      <div className="row">
         <div className="col-sm-6">
           <div className="well">
             <h4>Add a New Dish</h4>
@@ -71,11 +69,8 @@ class DishForm extends Component {
                 <textarea required className="form-control" rows="3" id="description" ref="description" placeholder="Dish Description"></textarea>
               </div>
               <div className="form-group">
-                <label htmlFor="image" className="control-label">Picture</label>
-                <div>
-                  <input required type="file" id="image"  ref="image"/>
-                  <p className="help-block">Select your dish photo.</p>
-                </div>
+                <label htmlFor="image">Picture Url</label>
+                <input required className="form-control" id="image" ref="image" placeholder="Dish Image Url"/>
               </div>
               <button 
                 type="submit" 
@@ -83,7 +78,8 @@ class DishForm extends Component {
                 onClick={this.handleSubmit}>Submit</button>
             </form>
           </div>
-
+        </div>
+        <div className="col-sm-6">
           <div className="well">
             <h4>Delete a Dish</h4>
             <form>
@@ -99,8 +95,8 @@ class DishForm extends Component {
                 onClick={this.handleDelete}>Delete</button>
             </form>
           </div>
-
         </div>
+      </div>
     )
   }
 }
@@ -115,7 +111,8 @@ function mapDispatchToProps(dispatch){
   return bindActionCreators(
     {
       postDish: postDish,
-      deleteDish: deleteDish
+      deleteDish: deleteDish,
+      getDishes: getDishes
     },dispatch);
 }
 

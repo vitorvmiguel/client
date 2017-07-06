@@ -12,6 +12,7 @@ import App from './components/App';
 import DishesList from './components/DishesList';
 import Cart from './components/Cart';
 import DishForm from './components/DishForm';
+import About from './components/About';
 import './css/index.css';
 // state management
 import reducers  from './reducers/index';
@@ -24,10 +25,10 @@ render(
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={DishesList}/>
-        <Route path="/admin" component={DishForm}/>
+        <Route path="/about" component={About}/>
+        <Route path="/chef" component={DishForm}/>
         <Route path="/cart" component={Cart}/>
       </Route>
-
     </Router>
   </Provider>, 
   document.getElementById('root')

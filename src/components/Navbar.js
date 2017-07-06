@@ -23,7 +23,7 @@ const Navbar = () => {
           <ul className="nav navbar-nav navbar-right">
             <li><a href="about">About</a></li>
             <li><a href="cart">Contact Us</a></li>
-            <li><a href="admin">Login</a></li>
+            <li><a href="chef">Chef</a></li>
           </ul>
         </div>
       </div>

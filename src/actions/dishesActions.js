@@ -9,12 +9,11 @@ export function getDishes(){
           type: 'GET_DISHES',
           payload: response.data
         })
-        console.log('RESPONSE.DATA: ',response.data)
     })
     .catch(function(error){
       dispatch(
         {
-            type: 'POST_DISH_ERROR',
+            type: 'GET_DISH_ERROR',
             payload: error
         })
     })
@@ -25,33 +24,49 @@ export function getDishes(){
 }
 
 export function postDish(dish){
-  // return function(dispatch){
-  //   axios.post('/dishes', dish)
-  //   .then(function(response){
-  //       dispatch(
-  //         {
-  //           type: 'POST_DISH', 
-  //           payload: response.data
-  //         })
-  //   })
-  //   .catch(function(error){
-  //       dispatch(
-  //         {
-  //           type: 'POST_DISH_ERROR',
-  //           payload: payload.error
-  //       })
-  //   })
-  // }
-  return {
-    type: 'POST_DISH',
-    payload: dish
+  return function(dispatch){
+    axios.post('/dishes', dish)
+    .then(function(response){
+        dispatch(
+          {
+            type: 'POST_DISH', 
+            payload: response.data
+          })
+    })
+    .catch(function(error){
+        dispatch(
+          {
+            type: 'POST_DISH_ERROR',
+            payload: error
+        })
+    })
   }
 }
 
+// export function deleteDish(id){
+//   return {
+//     type: 'DELETE_DISH',
+//     payload: id
+//   }
+// }
+
 export function deleteDish(id){
-  return {
-    type: 'DELETE_DISH',
-    payload: id
+  return function(dispatch){
+    axios.delete("/dishes/" + id)
+    .then(function(response){
+    dispatch(
+      {
+        type:"DELETE_DISH",
+        payload: id
+      })
+    })
+    .catch(function(error){
+    dispatch(
+      {
+        type:"DELETE_DISH_REJECTED",
+        payload: error
+      })
+    })
   }
 }
 

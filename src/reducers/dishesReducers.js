@@ -38,7 +38,6 @@ export function dishesReducers(state={
   switch(action.type) {
     case 'GET_DISHES':
       return {...state, dishes: action.payload}
-      //...state.dishes
     case 'POST_DISH':
       return {dishes:[...state.dishes, ...action.payload]}
     case 'DELETE_DISH':
