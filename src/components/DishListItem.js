@@ -36,6 +36,10 @@ class DishListItem extends Component {
     }
   }
   render() {
+    let rating = '';
+    if(this.props.averageRating !== "0.0") {
+      rating = this.props.averageRating;
+    } 
     return (
       <li key={this.props.id} className="col-sm-6 col-md-6 col-lg-6">
 
@@ -45,11 +49,15 @@ class DishListItem extends Component {
 
           <div className="caption">
             <h4>
-              <a href={this.props.id}>
+              <a href={'/dishes/' + this.props.id}>
                 <span>{this.props.dishName} </span>
                 <span className="label label-default">
                   <span>€ {this.props.price}</span>
                 </span>
+                <button className="btn btn-warning btn-xs" onClick={this.handleCart.bind(this)}>
+                  <span className="glyphicon glyphicon-shopping-cart"></span>
+                  <span> Add to Cart</span>
+                </button>
                 <br/>
                 <small>by {this.props.chefName}</small>
               </a>
@@ -61,7 +69,7 @@ class DishListItem extends Component {
               <li>
                 <button className="btn btn-info btn-xs" type="button">
                   <span className="glyphicon glyphicon-heart"></span>
-                  <span className="rating"> {this.props.averageRating} </span>
+                  <span className="rating"> {rating} </span>
                   <span className="badge">{this.props.numberOfRatings}</span>
                 </button>
               </li>
@@ -73,7 +81,7 @@ class DishListItem extends Component {
                 </button>
               </li>
               <li>
-                <button className="btn btn-info btn-xs" type="button" onClick={this.handleCart.bind(this)}>
+                <button className="btn btn-info btn-xs" type="button">
                   <span className="glyphicon glyphicon-cutlery"></span>
                   <span className="comment"> Portions </span>
                   <span className="badge">{this.props.availablePortions}</span>

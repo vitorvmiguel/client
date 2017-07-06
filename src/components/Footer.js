@@ -32,7 +32,7 @@ const Footer = () => {
               </div>
               <div className="extra pull-left col-xs-12 col-sm-6 text-center">
                 <ul className="list-unstyled">
-                  <li><a >Homepage</a></li>
+                  <li><a href="/">Homepage</a></li>
                   <li><a >Work with us</a></li>
                   <li><a >Privacy policy</a></li>
                   <li><a >Terms and conditions</a></li>

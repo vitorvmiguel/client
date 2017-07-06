@@ -14,7 +14,7 @@ const Navbar = () => {
           </button>
           <a className="navbar-brand" href="/">
             <img alt="Logo" src={logo}/>
-            <span>Kitches</span>
+            <span> Kitches</span>
           </a>
         </div>
         <div className="collapse navbar-collapse" id="hamburger">

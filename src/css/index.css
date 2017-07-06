@@ -44,7 +44,7 @@ a:hover {
   border-color: #00A59C;
 }
 
-.label-warning, .label-danger, .btn-warning  {
+.label-warning, .label-danger, .btn-warning, .btn-danger  {
   background-color: #ED5130;
   border-color: #ED5130;
 }
@@ -128,17 +128,22 @@ a:hover {
   display: inline-block;
 }
 
-.ratings ul > li > button {
-  background-color: #00A59C;
-  border-color: #00A59C;
+.ratings ul > li > button.btn-info {
+  background-color: white;
+  color: #00A59C;
+  border-color: white;
   margin: 2px;
   font-size: 0.9em;
 }
 
-.ratings > ul > li > button.btn-warning {
-  background-color: #ED5130;
-  border-color: #ED5130;
+.ratings ul > li > button.btn-info:hover {
+  background-color: white;
+  color: #00A59C;
+  border-color: white;
+  margin: 2px;
+  font-size: 0.9em;
 }
+
 /* chef profile */
 
 .chef-card {
@@ -211,4 +216,11 @@ a:hover {
 
 .about-card {
   padding: 30px;
+}
+
+@media only screen and (min-width: 992px) {
+  .fix {
+    position: fixed;
+    width: 30%;
+  }
 }

@@ -45,7 +45,7 @@ class Cart extends Component {
       return (
             <li className="list-group-item clearfix" key={item.id}>
               <div className="btn-group" role="group" aria-label="...">
-                <button onClick={this.onDecrement.bind(this, item.id, item.portions)} type="button" className="btn btn-xs btn-default">-</button>
+                {/*<button onClick={this.onDecrement.bind(this, item.id, item.portions)} type="button" className="btn btn-xs btn-default">-</button>*/}
                 <button onClick={this.onIncrement.bind(this, item.id)} type="button" className="btn btn-xs btn-default">+</button>
                 <button onClick={this.handleDelete.bind(this, item.id)} type="button" className="btn btn-xs btn-danger">
                   <span className="glyphicon glyphicon-trash"></span>
@@ -57,13 +57,13 @@ class Cart extends Component {
             </li>
       )
     }, this);
-    return (
-    <div className="col-sm-12">
-      <div className="thumbnail affix">
+    return (  
+    <div className="col-xs-12">
+      <div className="thumbnail fix">
         <div className="caption">
           <h4>
             <span className="glyphicon glyphicon-shopping-cart"> </span>
-            <span>Shopping Cart</span>
+            <span> Shopping Cart</span>
           </h4>
           <hr/>
           <ul className="list-group">
@@ -76,7 +76,7 @@ class Cart extends Component {
               <span className="pull-right">{this.props.total}<span> €</span></span>
             </h4>
           </div>
-          <button className="col-xs-12 btn btn-warning">Buy</button>
+          <button className="col-xs-12 btn btn-warning" data-toggle="modal" data-target="#checkout-modal">Proceed to Checkout</button>
         </div>
       </div>
     </div>
