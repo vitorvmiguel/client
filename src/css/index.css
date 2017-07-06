@@ -1,3 +1,47 @@
+.login-register-form-section {
+    max-width: 350px;
+    margin: 0 auto;
+    margin-top: 125px;
+    margin-bottom: 125px;
+}
+.login-register-form-section i {
+    width: 10px;
+}
+.login-register-form-section .nav-tabs > li > a {
+    color: #00a69c;
+}
+
+.login-register-form-section .nav-tabs > li.active > a {
+    background-color: #00a69c;
+    border-color: #00a69c;
+    color: white;
+}
+.login-register-form-section .nav-tabs > li > a, 
+.login-register-form-section .nav-tabs > li.active > a {
+    width: 160px;
+    text-align: center; 
+    border-radius: 0;
+}
+.login-register-form-section .nav-tabs {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+.login-register-form-section .btn-custom {
+    width: 100%;
+    background-color: #00a69c;
+    border-color: #00a69c;
+    margin-bottom: 0.5em;
+    border-radius: 0;
+}
+.login-register-form-section .btn-custom:hover {
+    width: 100%;
+    background-color: #00a69c;
+    border-color: #00a69c;
+}
+.login-register-form-section .form-group {
+    padding: 0 20px;
+}
+
 .all-colors-pallete {
   color: #ED5130;
   color: #00A59C;

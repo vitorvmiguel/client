@@ -11,6 +11,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import App from './components/App';
 import DishesList from './components/DishesList';
 import Contact from './components/Contact';
+import Login from './components/Login';
 import DishForm from './components/DishForm';
 import About from './components/About';
 import DishShow from './components/DishShow';
@@ -29,6 +30,7 @@ render(
         <Route path="/about" component={About}/>
         <Route path="/chef" component={DishForm}/>
         <Route path="/contact" component={Contact}/>
+        <Route path="/login" component={Login}/>
         <Route path="/dishes/:id" component={DishShow}/>
       </Route>
     </Router>
