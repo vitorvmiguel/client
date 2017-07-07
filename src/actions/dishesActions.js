@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export function getDishes(){
   return function(dispatch){
-    axios.get('/dishes')
+    axios.get('/api/v1/dishes')
     .then(function(response){
       dispatch(
         {
@@ -22,7 +22,7 @@ export function getDishes(){
 
 export function postDish(dish){
   return function(dispatch){
-    axios.post('/dishes', dish)
+    axios.post('/api/v1/dishes', dish)
     .then(function(response){
         dispatch(
           {
@@ -42,7 +42,7 @@ export function postDish(dish){
 
 export function deleteDish(id){
   return function(dispatch){
-    axios.delete("/dishes/" + id)
+    axios.delete("/api/v1/dishes/" + id)
     .then(function(response){
     dispatch(
       {
@@ -69,7 +69,7 @@ export function updateDish(dish){
 
 export function getComments(id){
   return function(dispatch){
-    axios.get('/dishes/'+ id +'/ratings')
+    axios.get('/api/v1/dishes/'+ id +'/ratings')
     .then(function(response){
       dispatch(
         {
@@ -89,7 +89,7 @@ export function getComments(id){
 
 export function postComment(comment){
   return function(dispatch){
-    axios.post('/rating', comment)
+    axios.post('/api/v1/rating', comment)
     .then(function(response){
         dispatch(
           {
@@ -109,7 +109,7 @@ export function postComment(comment){
 
 export function getOneDish(id){
   return function(dispatch){
-    axios.get('/dishes/'+ id)
+    axios.get('/api/v1/dishes/'+ id)
     .then(function(response){
       dispatch(
         {
@@ -129,7 +129,7 @@ export function getOneDish(id){
 
 export function getChef(id){
   return function(dispatch){
-    axios.get('/chef/'+ id)
+    axios.get('/api/v1/chef/'+ id)
     .then(function(response){
       dispatch(
         {
