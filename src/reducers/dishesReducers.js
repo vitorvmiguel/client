@@ -1,7 +1,8 @@
 export function dishesReducers(state={
   dishes: [],
   comments: [],
-  one_dish: {}
+  one_dish: {},
+  chef: {}
 }, action) {
   switch(action.type) {
     case 'GET_DISHES':
@@ -43,7 +44,9 @@ export function dishesReducers(state={
       return {dishes: [...currentDishToUpdate.slice(0, indexToUpdate), newDishToUpdate,
         ...currentDishToUpdate.slice(indexToUpdate)]}
     case 'GET_ONE_DISH':
-      return {one_dish: action.payload}
+      return {...state, one_dish: action.payload}
+    case 'GET_CHEF':
+      return {...state, chef: action.payload}
     case 'GET_COMMENTS':
       return {...state, comments: action.payload}
     case 'POST_COMMENT':

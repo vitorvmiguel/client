@@ -31,7 +31,7 @@ render(
         <Route path="/chef" component={DishForm}/>
         <Route path="/contact" component={Contact}/>
         <Route path="/login" component={Login}/>
-        <Route path="/dishes/:id" component={DishShow}/>
+        <Route path="/dishes/:id(/:chefId)" component={DishShow}/>
       </Route>
     </Router>
   </Provider>, 

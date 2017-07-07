@@ -18,9 +18,6 @@ export function getDishes(){
         })
     })
   }
-  // return {
-  //   type: 'GET_DISHES'
-  // }
 }
 
 export function postDish(dish){
@@ -42,13 +39,6 @@ export function postDish(dish){
     })
   }
 }
-
-// export function deleteDish(id){
-//   return {
-//     type: 'DELETE_DISH',
-//     payload: id
-//   }
-// }
 
 export function deleteDish(id){
   return function(dispatch){
@@ -131,6 +121,26 @@ export function getOneDish(id){
       dispatch(
         {
             type: 'GET_ONE_DISH_ERROR',
+            payload: error
+        })
+    })
+  }
+}
+
+export function getChef(id){
+  return function(dispatch){
+    axios.get('/chef/'+ id)
+    .then(function(response){
+      dispatch(
+        {
+          type: 'GET_CHEF',
+          payload: response.data
+        })
+    })
+    .catch(function(error){
+      dispatch(
+        {
+            type: 'GET_CHEF_ERROR',
             payload: error
         })
     })

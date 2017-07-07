@@ -2,18 +2,19 @@ import React, { Component, PropTypes  } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { findDOMNode } from 'react-dom';
-import { getComments, getOneDish, postComment, getDishes } from '../actions/dishesActions'
-
-
-import chef from '../images/c.jpg';
+import { getComments, getOneDish, postComment, getDishes, getChef } from '../actions/dishesActions'
 
 class DishShow extends Component {
   constructor(props) {
     super(props)
-    this.state = { showReviewForm: false }
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = { 
+      showReviewForm: false
+    }
     this.props.getDishes();
     this.props.getComments(this.props.params.id);
     this.props.getOneDish(this.props.params.id); 
+    this.props.getChef(this.props.params.chefId);
   }
   static contextTypes = {
     router: PropTypes.object
@@ -24,14 +25,12 @@ class DishShow extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const comment = {
-      dishId: "1",
-      userId: "1",
+      dishId: this.props.params.id,
+      userId: "0",
       stars: findDOMNode(this.refs.stars).value,
       comment: findDOMNode(this.refs.comment).value
     }
-    this.props.postDish(comment);
-
-    this.handleRedirect();
+    this.props.postComment(comment);
   }
   handleRedirect() {
     this.context.router.push('/');
@@ -49,7 +48,7 @@ class DishShow extends Component {
                   <span className="glyphicon glyphicon-heart"></span>
                   <span className="rating">{comment.stars}</span>
                 </span>  
-                  <span className="reviewer"><strong>{comment.userName}</strong></span>
+                  <span className="reviewer"><strong>{ comment.userName === "UNKNOWN" ?  'Anonymous' : comment.userName}</strong></span>
                   {/*<span className="pull-right">10 days ago</span>*/}
                   <p>{comment.comment}</p>
               </div>
@@ -98,13 +97,13 @@ return (
       <div className="col-sm-5">
         <div className="thumbnail clearfix chef-card">
           <div className="col-xs-8 col-xs-offset-2">
-            <img src={chef} alt="" className="img-thumbnail img-circle center-block"/>
+            <img src={this.props.chef.chefImageUrl} alt="" className="img-thumbnail img-circle center-block"/>
           </div>
           <div className="col-xs-12 chef-name">
             <h3>
-              <span>Mighty Chef</span>
+              <span>{this.props.chef.name}</span>
               <br/>
-              <small> Authentic Catalan cuisine</small> 
+              <small> {this.props.chef.chefMoto}</small> 
             </h3>
             <div className="label label-success">
               <span className="glyphicon glyphicon-ok-sign"></span>
@@ -114,30 +113,16 @@ return (
           <div className="col-xs-12 chef-description">
             <dl>
               <dt>About me</dt>
-              <dd>Cooking is my passion. Cooking is my passion. Cooking is my passion. Cooking is my passion. </dd>
+              <dd>{this.props.chef.chefDescription}</dd>
             </dl>
           </div>
         </div>
-        <div className="panel panel-default dishes">
-{/*small dish list begin*/}
-          <div className="panel-heading">
-            <h4>
-              <span className="glyphicon glyphicon-cutlery"></span>
-              <span> Dishes </span>
-            </h4>
-          </div>
-          <ul className="list-group media-list">
-            {/*{dishesList}*/}
-          </ul>
-        </div>
-    </div>
-{/*small dish list begin*/}
-      <div className="col-sm-5">
-        
+      </div>
+
+      <div className="col-sm-5">       
         <div className="thumbnail dish-detail">
           <img src={this.props.one_dish.imageUrl} alt="" className="img-responsive" />
           <div className="caption clearfix">
-
           <div className="col-xs-12 dish-title">
             <a href="">
               <h3>
@@ -146,9 +131,6 @@ return (
                   <span className="glyphicon glyphicon-euro"> </span>
                   <span>{this.props.one_dish.price}</span>
                 </span>
-                <br/>
-                <small>by </small>
-                <small className="chefName">{this.props.one_dish.chefName}</small>
               </h3>
             </a>
           </div>
@@ -162,41 +144,24 @@ return (
             <ul className="list-inline">
               <li>
                 <button className="btn btn-info" type="button">
-                  <span className="glyphicon glyphicon-heart"></span>
-                  <span className="rating"> 4.8 </span>
-                  <span className="badge">37</span>
-                </button>
-              </li>
-              <li>
-                <button className="btn btn-info" type="button">
-                  <span className="glyphicon glyphicon-comment"></span>
-                  <span className="comment"> Reviews </span>
-                  <span className="badge">21</span>
-                </button>
-              </li>
-              <li>
-                <button className="btn btn-info" type="button">
                   <span className="glyphicon glyphicon-cutlery"></span>
                   <span className="comment"> Available </span>
-                  <span className="badge">15</span>
+                  <span className="badge">{this.props.one_dish.availablePortions}</span>
                 </button>
               </li>
             </ul>
           </div>
         </div>
       </div>
-
         <div className="panel panel-default reviews">
-
           <div className="panel-heading clearfix">
             <h4 className="pull-left">
               <span className="glyphicon glyphicon-comment"></span>
               <span> Reviews </span>
-              <span className="badge">21</span>
             </h4>
-            <button className="btn btn-warning pull-right">
+            {/*<button className="btn btn-warning pull-right">
               <span className="glyphicon glyphicon-edit"> </span>
-              <span>Leave a Review</span></button>
+              <span>Leave a Review</span></button>*/}
           </div>
           <ul className="list-unstyled">
             {comments}
@@ -207,12 +172,12 @@ return (
                 <form>
                   <div className="form-group">
                     <label htmlFor="rating-form">Rating</label>
-                    <select className="form-control" id="rating-form" ref="stars">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
+                    <select name="stars" className="form-control" id="rating-form" ref="stars">
+                      <option value="5">5</option>
+                      <option value="4">4</option>
+                      <option value="3">3</option>
+                      <option value="2">2</option>
+                      <option value="1">1</option>
                     </select>
                   </div>
                   <div className="form-group">
@@ -236,7 +201,8 @@ function mapStateToProps(state) {
   return {
     comments: state.dishes.comments,
     one_dish: state.dishes.one_dish,
-    dishes: state.dishes.dishes
+    dishes: state.dishes.dishes,
+    chef: state.dishes.chef
   }
 }
 
@@ -246,7 +212,8 @@ function mapDispatchToProps(dispatch){
       getComments: getComments, 
       postComment: postComment,
       getOneDish: getOneDish,
-      getDishes: getDishes
+      getDishes: getDishes,
+      getChef: getChef
     },dispatch);
 }
 

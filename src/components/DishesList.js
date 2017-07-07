@@ -24,7 +24,8 @@ class DishesList extends Component {
           numberOfRatings={dish.numberOfRatings}
           numberOfComments={dish.numberOfComments}
           availablePortions={dish.availablePortions}
-          imageUrl={dish.imageUrl}/>
+          imageUrl={dish.imageUrl}
+          chefId={dish.chefId}/>
       )
     });
     return(

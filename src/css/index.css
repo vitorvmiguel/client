@@ -193,6 +193,13 @@ a:hover {
 .chef-card {
   padding-top: 20px;
 } 
+
+.chef-card img.img-thumbnail.img-circle.center-block {
+  width: 100%;
+  max-width: 250px;
+  height: 100%;
+  max-height: 250px;
+}
 /* media list */
 
 .list-group-item > a:hover {

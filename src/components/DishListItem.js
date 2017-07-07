@@ -39,7 +39,7 @@ class DishListItem extends Component {
     let rating = 'be 1st';
     let nRatings = '';
     if(this.props.averageRating !== "0.0") {
-      rating = this.props.averageRating;
+      rating = this.props.averageRating.substr(0,3);
       nRatings = this.props.numberOfRatings;
     } 
     return (
@@ -51,7 +51,7 @@ class DishListItem extends Component {
 
           <div className="caption">
             <h4>
-              <a href={'/dishes/' + this.props.id}>
+              <a href={'/dishes/' + this.props.id + '/' + this.props.chefId}>
                 <span>{this.props.dishName} </span>
                 <span className="label label-default">
                   <span>€ {this.props.price}</span>
